@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>House Pets</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        .container {
+            padding: 20px;
+            border: 2px solid black;
+            display: inline-block;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>House Pets</h1>
+        <button onclick="generateNumbers()">Spin</button>
+        <p id="numbers"></p>
+        <p id="largest"></p>
+        <p id="nthLetter"></p>
+        <p id="timeBreakdown"></p>
+    </div>
+
+    <script>
+        function generateNumbers() {
+            var num1 = Math.ceil(Math.random() * 20);
+            var num2 = Math.ceil(Math.random() * 20);
+            var num3 = Math.ceil(Math.random() * 20);
+            
+            document.getElementById("numbers").innerText = `LIST: (CAT) ${num1} , (DOG) ${num2} ,(HAMSTER) ${num3}`;
+            
+            let largest = Math.max(num1, num2, num3);
+            document.getElementById("largest").innerText = `Largest voters out of all animals: ${largest}`;
+            
+            let alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+            let letter = num1 <= 26 ? alphabet[num1 - 1] : "N/A";
+            document.getElementById("nthLetter").innerText = `The ${num1}th letter is: ${letter}`;
+            
+            let totalMinutes = num2 * num3;
+            let hours = Math.floor(totalMinutes / 60);
+            let minutes = totalMinutes % 60;
+            document.getElementById("timeBreakdown").innerText = `Time: ${totalMinutes} mins = ${hours} hr(s) ${minutes} min(s)`;
+        }
+    </script>
+</body>
+</html>
